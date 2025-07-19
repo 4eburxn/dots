@@ -1,0 +1,10 @@
+[Unit]
+Description=Disable Turbo Boost
+After=sysinit.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/sh -c 'echo 0 > /sys/devices/system/cpu/cpufreq/boost'
+
+[Install]
+WantedBy=multi-user.target
