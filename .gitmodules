@@ -1,0 +1,3 @@
+[submodule "GitBSLR"]
+	path = GitBSLR
+	url = https://git.disroot.org/Sir_Walrus/GitBSLR.git
