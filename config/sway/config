@@ -17,7 +17,7 @@ set $right l
 set $term footclient
 exec_always foot -s
 # Your preferred application launcher
-set $menu 'killall bemenu-run; bemenu-run -p ">" -b --tb "#285577" --hb "#285577" --tf "#eeeeee" --hf "#eeeeee" --nf "#bbbbbb"'
+set $menu 'killall bemenu-run; bemenu-run -p ">" -b --tb "#285577" --hb "#285577" --tf "#eeeeee" --hf "#eeeeee" --nf "#bbbbbb" -H 23 '
 
 output DP-1 mode 2560x1440@180Hz max_render_time 8
 
@@ -71,6 +71,7 @@ input * {
     # Start a terminal
     bindsym $mod+Return exec $term
     bindsym --to-code $mod+Shift+S exec slurp | grim -g - - | wl-copy
+    bindsym --to-code $mod+Shift+A exec grim - | wl-copy
     # Kill focused window
     bindsym --to-code $mod+Shift+q kill
 
@@ -88,7 +89,7 @@ input * {
     bindsym --to-code $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym --to-code $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym --to-code $mod+Shift+e exec swaynag -t warning -m '' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -220,10 +221,8 @@ bindsym --to-code $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
+    position bottom
+	tray_output *
     status_command  i3blocks
 
     colors {
@@ -232,5 +231,61 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 include /etc/sway/config.d/*
