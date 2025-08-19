@@ -111,3 +111,9 @@ alias la="eza -la"
 alias ls="eza"
 alias tree="eza -T"
 alias sudo="doas"
+alias sudoedit="doas nvim"
+
+
+
+
+bindkey '^H' backward-kill-word

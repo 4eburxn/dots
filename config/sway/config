@@ -4,6 +4,14 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+exec dbus-update-activation-environment --systemd \
+    DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+# exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+# exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec /usr/libexec/xdg-desktop-portal-wlr &
+default_border pixel
+# hide_edge_borders both
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -17,9 +25,11 @@ set $right l
 set $term footclient
 exec_always foot -s
 # Your preferred application launcher
-set $menu 'killall bemenu-run; bemenu-run -p ">" -b --tb "#285577" --hb "#285577" --tf "#eeeeee" --hf "#eeeeee" --nf "#bbbbbb" -H 23 '
+set $menu 'killall bemenu-run;\
+		  bemenu-run -p ">" -b --tb "#285577" --hb "#285577" --tf "#eeeeee" --hf "#eeeeee" --nf "#bbbbbb" -H 23 '
 
-output DP-1 mode 2560x1440@180Hz max_render_time 8
+output DP-1 mode 2560x1440@180Hz max_render_time 8 
+output "*" bg #ffffff solid_color
 
 input * {
     xkb_layout "us,ru"
@@ -147,8 +157,6 @@ input * {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym --to-code $mod+b splith
-    bindsym --to-code $mod+v splitv
 
     # Switch the current container between different layout styles
     bindsym --to-code $mod+s layout stacking
@@ -222,36 +230,24 @@ bindsym --to-code $mod+r mode "resize"
 # Read `man 5 sway-bar` for more information about this section.
 bar {
     position bottom
-	tray_output *
+	tray_output DP-1
     status_command  i3blocks
 
     colors {
         statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+		background #282828
+		inactive_workspace #282936BF #282936BF #5c5c5c
     }
 }
+# bar { 
+#      swaybar_command waybar
+# }
 
 
+bindsym $mod+v split toggle
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+bindsym $mod+Shift+t sticky toggle
 
 
 

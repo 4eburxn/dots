@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Session
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+# Wayland stuff
+export MOZ_ENABLE_WAYLAND=1
+export QT_QPA_PLATFORM=wayland
+export SDL_VIDEODRIVER=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export XDG_DESKTOP_PORTAL=wlr  # Важно: указываем именно wlr, а не kde/gnome!
+
+exec dbus-run-session sway
+
+#
+# If you use systemd and want sway output to go to the journal, use this
+# instead of the `exec sway "$@"` above:
+#
+#    exec systemd-cat --identifier=sway sway "$@"
+#

@@ -39,9 +39,13 @@ markup=none
 color=#ffcc00
 interval=1
 
+[mousebat]
+interval=100
+# label=󰍽 
+command=echo 󰍽 $(cat /sys/class/power_supply/hidpp_battery_*/capacity)% 
 
-[volume]
-#label=♪
+[volume-pipewire]
+label=♪
 label=VOL
 interval=once
 signal=10

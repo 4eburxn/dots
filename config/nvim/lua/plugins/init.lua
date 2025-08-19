@@ -41,13 +41,13 @@ return {
                     enable = true,
                     -- ...
                 },
-                indent = {
-                    enable = true,
-                    -- ...
-                },
-                blank = {
-                    enable = true,
-                },
+                -- indent = {
+                --     enable = true,
+                --     -- ...
+                -- },
+                -- blank = {
+                --     enable = true,
+                -- },
             }
         end,
     },
